@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>lab5</title>
+</head>
+<body>
+	<input id="mathGrade" placeholder="Math"><input id="englishGrade" placeholder="English"><button id ="submit">submit</button>
+	<table border="1">
+		<tr><th>#</th><th>Math</th><th>English</th><th>Average</th></tr>
+		<tbody id=content></tbody>
+		<tbody id = "sum"></tbody>
+	</table>
+
+	<script>
+		var count=1;
+		var englishSum=0;
+		var mathSum=0;
+		var averageSum=0;
+		const submit =document.getElementById("submit");
+		submit.addEventListener("click",function(){
+			const math =parseInt(document.getElementById("mathGrade").value);
+			const english=parseInt(document.getElementById("englishGrade").value);
+			if(isNaN(math)||isNaN(english)){
+				alert('輸入數字');
+			}
+			else{
+				const content = document.getElementById("content");
+				englishSum+=english;
+				mathSum+=math;
+				averageSum=averageSum+(math+english)/2;
+				content.innerHTML=content.innerHTML+"<tr><td>"+count+"</td><td>"+math+"</td><td>"+english+"</td><td>"+(math+english)/2+"</td></tr>";
+				const sumUp=document.getElementById("sum");
+				sumUp.innerHTML="<tr><td>Average</td><td>"+(mathSum/count)+"</td><td>"+(englishSum/count)+"</td><td>"+averageSum/count+"</td></tr>";
+				count++;
+			}
+
+		});
+	</script>
+
+
+
+
+</body>
+</html>
